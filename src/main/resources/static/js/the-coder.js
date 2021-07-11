@@ -6,11 +6,12 @@ function clickFunction() {
         'personB2': document.getElementById("four").value
     }
     $.ajax({
-        url: '/',
+        url: '/getValue',
         async: false,
         type: 'POST',
         data: option,
         success: function () {
+            $('.average').removeClass('hide')
             console.log('success')
         },
         error: function (e) {
