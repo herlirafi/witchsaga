@@ -20,11 +20,13 @@ public class VillagerHelper {
     }
 
     public double averageKilledPeople(int Aaod, int Ayod, int Baod, int Byod) {
-        double personA = getPeopleKilledOnYear(Ayod - Aaod);
-        double personB = getPeopleKilledOnYear(Byod - Baod);
-        if (personA <= 0 || personB <= 0) {
+        int A = Ayod - Aaod;
+        int B = Byod - Baod;
+        if (A <= 0 || B <= 0) {
             return -1;
         }
+        double personA = getPeopleKilledOnYear(A);
+        double personB = getPeopleKilledOnYear(B);
         return (personA + personB) / 2;
     }
 }
