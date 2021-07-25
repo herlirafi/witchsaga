@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Class HomePageController
@@ -18,32 +19,24 @@ import java.text.DecimalFormat;
 @Controller
 public class HomePageController {
 
+    private final List<String> result = new ArrayList<>();
+
     @Resource(name = "villagerHelper")
     private VillagerHelper villagerHelper;
 
-    private double saveValue;
-    public double getSaveValue() {
-        return saveValue;
-    }
-    public void setSaveValue(double saveValue) {
-        this.saveValue = saveValue;
-    }
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model) {
-        double average = getSaveValue();
-        DecimalFormat df = new DecimalFormat("###.#");
-        model.addAttribute("average", df.format(average));
-        return "html/witchVillagers";
+    public String averageResultPost(Model model) {
+        result.add("0");
+        model.addAttribute("average", result.get(0));
+        return "witchVillagers";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void getAjaxValue(
-            @RequestParam("personA1") final int personA1,
-            @RequestParam("personA2") final int personA2,
-            @RequestParam("personB1") final int personB1,
-            @RequestParam("personB2") final int personB2
-    ) {
-        setSaveValue(villagerHelper.averageKilledPeople(personA1, personA2, personB1, personB2));
+    public String averageResultGet(int personA1, int personA2, int personB1, int personB2) {
+        double average = villagerHelper.averageKilledPeople(
+                personA1, personA2, personB1, personB2);
+        DecimalFormat df = new DecimalFormat("###.#");
+        result.set(0, df.format(average));
+        return "redirect:/";
     }
 }

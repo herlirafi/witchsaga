@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geekseat Witch Saga</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <table>
+            <tr>
+                <td><label>A1</label></td>
+                <td><input type="number" name="personA1" required="required"/></td>
+            </tr>
+            <tr>
+                <td><label>A2</label></td>
+                <td><input type="number" name="personA2" required="required"/></td>
+            </tr>
+            <tr>
+                <td><label>B1</label></td>
+                <td><input type="number" name="personB1" required="required"/></td>
+            </tr>
+            <tr>
+                <td><label>B2</label></td>
+                <td><input type="number" name="personB2" required="required"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+            <tr>
+                <td><label>Result :</label></td>
+                <td th:text="${average}"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
