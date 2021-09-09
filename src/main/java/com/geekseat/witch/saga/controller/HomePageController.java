@@ -11,11 +11,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The Class HomePageController
- *
- * @author rafi.saeful.rahman
- */
 @Controller
 public class HomePageController {
 
