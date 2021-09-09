@@ -3,11 +3,6 @@ package com.geekseat.witch.saga.util;
 
 import org.springframework.stereotype.Component;
 
-/**
- * The Class VillagerHelper
- *
- * @author rafi.saeful.rahman
- */
 @Component
 public class VillagerHelper {
 
